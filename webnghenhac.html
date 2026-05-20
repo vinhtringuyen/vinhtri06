@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playlist - Nguyễn Vĩnh Trị</title>
+    <title>Playlist - Nguyễn Vỉnh Trị</title>
     <style>
         /* --- GIAO DIỆN CHUNG & KHỞI TẠO --- */
         * {
@@ -177,9 +177,55 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: #000000;
+            background: #020617; /* Màu nền tối huyền bí khi ở trạng thái chờ */
         }
 
+        /* --- MÀN HÌNH NỀN CHỜ KHI CHƯA KHỞI ĐỘNG VIDEO --- */
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)), 
+                        url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            padding: 20px;
+            z-index: 5;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Biểu tượng đĩa nhạc hoặc tai nghe ở màn hình chờ */
+        .video-placeholder .icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .video-placeholder h4 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #38bdf8;
+        }
+
+        .video-placeholder p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Thành phần Iframe phát video (Mặc định ẩn, sẽ hiện lên sau khi click bài) */
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -187,6 +233,21 @@
             width: 100%;
             height: 100%;
             border: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        /* Class kích hoạt khi đã chọn bài hát */
+        .video-container.playing .video-placeholder {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .video-container.playing iframe {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         /* --- CỘT 3: TIỂU SỬ NGHỆ SĨ (Bên phải) --- */
@@ -244,7 +305,7 @@
             <section class="sidebar">
                 <h3>Danh sách bài hát</h3>
                 <ul class="playlist-songs" id="playlist">
-                    <li class="active">
+                    <li>
                         <a data-video="8x2NjwwHUbQ">1. Hồng Nhan</a>
                     </li>
                     <li>
@@ -257,47 +318,19 @@
             </section>
 
             <section class="banner-area">
-                <div class="video-container">
-                    <iframe id="video-player" src="https://www.youtube.com/embed/8x2NjwwHUbQ?rel=0" allowfullscreen></iframe>
+                <div class="video-container" id="video-container">
+                    
+                    <div class="video-placeholder">
+                        <div class="icon">🎵</div>
+                        <h4>SẴN SÀNG PHÁT NHẠC</h4>
+                        <p>Vui lòng chọn một bài hát từ danh sách bên trái để thưởng thức MV</p>
+                    </div>
+
+                    <iframe id="video-player" src="" allowfullscreen></iframe>
                 </div>
             </section>
 
             <section class="bio-area">
                 <h3>Giới thiệu nghệ sĩ</h3>
                 <p class="bio-text">
-                    Bộ ba ca khúc đình đám "Hồng Nhan", "Bạc Phận" và "Sóng Gió" là những bản hit định hình tên tuổi, tạo nên bước ngoặt lớn trong sự nghiệp âm nhạc đương đại. Sự kết hợp độc đáo giữa âm hưởng dân gian miền Tây Nam Bộ trên nền phối khí điện tử hiện đại đã mang về hàng trăm triệu lượt xem trên nền tảng số.
-                </p>
-            </section>
-
-        </main>
-
-        <footer>
-            @CRE BY: NGUYỄN VĨNH TRỊ
-        </footer>
-    </div>
-
-    <script>
-        const playlist = document.getElementById('playlist');
-        const player = document.getElementById('video-player');
-        const items = playlist.getElementsByTagName('li');
-
-        playlist.addEventListener('click', function(e) {
-            if (e.target && e.target.nodeName === "A") {
-                const videoId = e.target.getAttribute('data-video');
-                
-                if (videoId) {
-                    // Cập nhật thuộc tính src để chuyển đổi và tự động phát video trực tiếp
-                    player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-                    
-                    // Cập nhật trạng thái hiển thị active cho các danh mục bài hát
-                    for (let i = 0; i < items.length; i++) {
-                        items[i].classList.remove('active');
-                    }
-                    e.target.parentElement.classList.add('active');
-                }
-            }
-        });
-    </script>
-
-</body>
-</html>
+                    Bộ ba ca khúc đình đám "Hồng Nhan", "Bạc Phận" và "Sóng Gió" là những bản hit định hình tên tuổi, tạo nên bước ngoặt lớn trong sự nghiệp âm nhạc đương đại. Sự kết hợp độc đáo giữa âm hưởng dân gian miền Tây Nam Bộ trên nền phối khí điện tử hiện đại đã mang về
