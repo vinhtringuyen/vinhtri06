@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playlist - Nguyễn Vỉnh Trị</title>
+    <title>Playlist - Nguyễn Vĩnh Trị</title>
     <style>
         /* --- GIAO DIỆN CHUNG & KHỞI TẠO --- */
         * {
@@ -86,7 +86,7 @@
             width: 100%;
         }
 
-        /* --- KHU VỰC NỘI DUNG CHÍNH (CHIA TOÀN RỘNG) --- */
+        /* --- KHU VỰC NỘI DUNG CHÍNH --- */
         .main-content {
             display: grid;
             grid-template-columns: 300px 1fr 320px; 
@@ -177,10 +177,10 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: #020617; /* Màu nền tối huyền bí khi ở trạng thái chờ */
+            background: #0f172a; 
         }
 
-        /* --- MÀN HÌNH NỀN CHỜ KHI CHƯA KHỞI ĐỘNG VIDEO --- */
+        /* --- MÀN HÌNH NỀN CHỜ BAN ĐẦU --- */
         .video-placeholder {
             position: absolute;
             top: 0;
@@ -192,16 +192,14 @@
             justify-content: center;
             align-items: center;
             color: #ffffff;
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
                         url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000') no-repeat center center;
             background-size: cover;
             text-align: center;
             padding: 20px;
             z-index: 5;
-            transition: opacity 0.5s ease;
         }
 
-        /* Biểu tượng đĩa nhạc hoặc tai nghe ở màn hình chờ */
         .video-placeholder .icon {
             font-size: 50px;
             margin-bottom: 15px;
@@ -222,10 +220,10 @@
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 1; }
         }
 
-        /* Thành phần Iframe phát video (Mặc định ẩn, sẽ hiện lên sau khi click bài) */
+        /* Thành phần Iframe phát video (Mặc định ẩn hoàn toàn bằng display: none) */
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -233,21 +231,17 @@
             width: 100%;
             height: 100%;
             border: none;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
+            display: none;
             z-index: 1;
         }
 
-        /* Class kích hoạt khi đã chọn bài hát */
+        /* LÚC ĐANG PHÁT: Ẩn màn hình chờ đi và Hiện khung video lên */
         .video-container.playing .video-placeholder {
-            opacity: 0;
-            pointer-events: none;
+            display: none;
         }
 
         .video-container.playing iframe {
-            opacity: 1;
-            pointer-events: auto;
+            display: block;
         }
 
         /* --- CỘT 3: TIỂU SỬ NGHỆ SĨ (Bên phải) --- */
@@ -333,4 +327,43 @@
             <section class="bio-area">
                 <h3>Giới thiệu nghệ sĩ</h3>
                 <p class="bio-text">
-                    Bộ ba ca khúc đình đám "Hồng Nhan", "Bạc Phận" và "Sóng Gió" là những bản hit định hình tên tuổi, tạo nên bước ngoặt lớn trong sự nghiệp âm nhạc đương đại. Sự kết hợp độc đáo giữa âm hưởng dân gian miền Tây Nam Bộ trên nền phối khí điện tử hiện đại đã mang về
+                    Bộ ba ca khúc đình đám "Hồng Nhan", "Bạc Phận" và "Sóng Gió" là những bản hit định hình tên tuổi, tạo nên bước ngoặt lớn trong sự nghiệp âm nhạc đương đại. Sự kết hợp độc đáo giữa âm hưởng dân gian miền Tây Nam Bộ trên nền phối khí điện tử hiện đại đã mang về hàng trăm triệu lượt xem trên nền tảng số.
+                </p>
+            </section>
+
+        </main>
+
+        <footer>
+            @CRE BY: NGUYỄN VĨNH TRỊ
+        </footer>
+    </div>
+
+    <script>
+        const playlist = document.getElementById('playlist');
+        const player = document.getElementById('video-player');
+        const container = document.getElementById('video-container');
+        const items = playlist.getElementsByTagName('li');
+
+        playlist.addEventListener('click', function(e) {
+            if (e.target && e.target.nodeName === "A") {
+                const videoId = e.target.getAttribute('data-video');
+                
+                if (videoId) {
+                    // 1. Gán link nhúng YouTube và bật tự động chạy video
+                    player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                    
+                    // 2. Kích hoạt class hiển thị khung Iframe lập tức lên màn hình
+                    container.classList.add('playing');
+                    
+                    // 3. Đổi màu nền active thanh bài hát được chọn bên trái
+                    for (let i = 0; i < items.length; i++) {
+                        items[i].classList.remove('active');
+                    }
+                    e.target.parentElement.classList.add('active');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
