@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Nguyễn Vỉnh Trị</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans (Rất hiện đại) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --primary: #6366f1; /* Indigo hiện đại */
+            --secondary: #a855f7; /* Tím gradient */
+            --dark-blue: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            /* ẢNH NỀN CÔNG NGHỆ CHUYÊN NGHIỆP */
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #f8fafc;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* KHUNG CHÍNH GLASSMORPHISM */
+        .main-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 60px 40px;
+            margin: 60px auto;
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        /* AVATAR TRÒN CÁCH ĐIỆU */
+        .avatar-wrapper {
+            position: relative;
+            padding: 10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .avatar {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 32px;
+            border: 4px solid #fff;
+            transition: all 0.5s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.02) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* TEXT VÀ BADGE */
+        .section-title {
+            font-weight: 800;
+            font-size: 2.8rem;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item i {
+            width: 40px;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .badge-custom {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-weight: 600;
+        }
+
+        /* GALLERY 3 CỘT */
+        .gallery-frame {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--glass-border);
+            aspect-ratio: 1 / 1;
+            margin-bottom: 24px;
+            transition: 0.4s;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-frame:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .gallery-frame:hover .gallery-img {
+            transform: scale(1.15);
+        }
+
+        /* NÚT ĐIỀU HƯỚNG DẠNG FLOATING GLASS */
+        .nav-btn {
+            position: fixed;
+            bottom: 40px;
+            padding: 15px 35px;
+            border-radius: 100px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .next-btn { 
+            right: 40px; 
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+        }
+
+        .prev-btn { left: 40px; }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            color: #fff;
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* CÁC NÚT MẠNG XÃ HỘI */
+        .social-btn {
+            padding: 12px 30px;
+            border-radius: 15px;
+            transition: 0.3s;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container pb-5">
+    <div class="main-box animate__animated animate__fadeIn">
+        
+        <div class="row align-items-center">
+            <!-- AVATAR -->
+            <div class="col-lg-5 text-center mb-5 mb-lg-0">
+                <div class="avatar-wrapper animate__animated animate__zoomIn">
+                    <img src="images/avatar.jpg" class="avatar" alt="Nguyễn Vỉnh Trị">
+                </div>
+            </div>
+
+            <!-- INFO -->
+            <div class="col-lg-7 animate__animated animate__fadeInRight">
+                <h1 class="section-title text-uppercase mb-4">Hello! I'm Trị</h1>
+                
+                <div class="info-item"><i class="fa-solid fa-signature"></i> <strong>Nguyễn Vỉnh Trị</strong></div>
+                <div class="info-item"><i class="fa-solid fa-calendar-day"></i> 2006 (19 tuổi)</div>
+                <div class="info-item"><i class="fa-solid fa-graduation-cap"></i> Đại học Trà Vinh (TVU)</div>
+                <div class="info-item"><i class="fa-solid fa-code"></i> <span class="badge-custom">CNTT - Information Technology</span></div>
+                <div class="info-item"><i class="fa-solid fa-bolt"></i> Design, Lập trình C, IELTS 9.0</div>
+                
+                <div class="mt-4">
+                    <a href="https://www.facebook.com/share/18q5bZdXBj/?mibextid=wwXIfr" class="btn btn-primary social-btn me-2"><i class="fab fa-facebook-f me-2"></i> Kết nối</a>
+                    <a href="https://github.com/vinhtringuyen" class="btn btn-outline-light social-btn"><i class="fab fa-github me-2"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5 opacity-25">
+
+        <!-- GALLERY -->
+        <div class="mb-5">
+            <h2 class="section-title text-center" style="font-size: 2rem;">HÀNH TRÌNH QUA ẢNH</h2>
+        </div>
+
+        <div class="row g-4 px-2">
+            <!-- Row 1 -->
+            <div class="col-md-4"><div class="gallery-frame"><img src="images/hinh2.jpg" class="gallery-img"></div></div>
+            <div class="col-md-4"><div class="gallery-frame"><img src="images/hinh4.jpg" class="gallery-img"></div></div>
+            <div class="col-md-4"><div class="gallery-frame"><img src="images/hinh5.jpg" class="gallery-img"></div></div>
+            <!-- Row 2 -->
+            <div class="col-md-4"><div class="gallery-frame"><img src="images/hinh6.jpg" class="gallery-img"></div></div>
+            <div class="col-md-4"><div class="gallery-frame"><img src="images/hinh7.jpg" class="gallery-img"></div></div>
+            <div class="col-md-4"><div class="gallery-frame"><img src="images/hinh8.jpg" class="gallery-img"></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- ĐIỀU HƯỚNG -->
+<a href="trangchu.html" class="nav-btn prev-btn">
+    <i class="fas fa-arrow-left me-2"></i> TRANG CHỦ
+</a>
+<a href="Trainghiem.html" class="nav-btn next-btn">
+    TRẢI NGHIỆM <i class="fas fa-arrow-right ms-2"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
