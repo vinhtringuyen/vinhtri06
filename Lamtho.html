@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Ví dụ 2 - Bài tập 1</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: white;
+            color: black;
+        }
+
+        .hr-red {
+            border: 0;
+            border-top: 2px solid red;
+            width: 20%;
+            margin: 5px auto;
+        }
+
+        .hr-blue {
+            border: 0;
+            border-top: 4px solid blue;
+            width: 40%;
+            margin: 5px auto;
+        }
+
+        .title-blue {
+            color: blue;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .poem-title {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .poem-content {
+            margin-left: 20px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .poem-footer {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        /* Nút quay lại đẹp hơn */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            margin-bottom: 25px;
+
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+        }
+
+        .back-btn:active {
+            transform: scale(0.98);
+        }
+
+        .back-icon {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">
+        <span class="back-icon">←</span>
+        Quay lại danh sách
+    </a>
+
+    <h1>HEADING 1</h1>
+    <h2>HEADING 2</h2>
+    <h3>HEADING 3</h3>
+    <h4>HEADING 4</h4>
+    <h5>HEADING 5</h5>
+    <h6>HEADING 6</h6>
+
+    <hr class="hr-red">
+    <hr class="hr-blue">
+
+    <div class="title-blue">Trên đây là dòng kẻ ngang</div>
+    <div class="poem-title">Thơ ngắn 2 câu</div>
+
+    <div class="poem-content">
+        Biển cứ cậy là mình dài rộng thế,<br>
+        Vắng cánh buồm chỉ một chút đã cô đơn.<br><br>
+
+        Chút nắng vàng sao làm nên mùa hạ,<br>
+        Chút tình xa lạ sao giữ được người ta.
+    </div>
+
+    <div class="poem-footer">
+        Có khi nào trên đường đời tấp nập.<br>
+        Ta vô tình đã lướt qua nhau.
+    </div>
+
+</body>
+</html>

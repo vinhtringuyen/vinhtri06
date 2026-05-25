@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <title>Giới thiệu bản thân | Nguyễn Vỉnh Trị</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 3 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #3b82f6;
+      --accent-color: #6366f1;
+      --glass-bg: rgba(255, 255, 255, 0.95);
+    }
+
+    body {
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.8),
+        rgba(15, 23, 42, 0.8)),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070')
+        no-repeat center center fixed;
+
+      background-size: cover;
+      font-family: 'Inter', sans-serif;
+      color: #334155;
+    }
+
+    /* =========================
+       NÚT QUAY LẠI
+    ========================== */
+    .back-btn {
+      position: fixed;
+      top: 25px;
+      right: 30px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 12px 24px;
+
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: white;
+
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+
+      border-radius: 50px;
+
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+
+      transition: all 0.3s ease;
+
+      z-index: 9999;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+
+      box-shadow: 0 15px 25px rgba(59, 130, 246, 0.45);
+
+      color: white;
+      text-decoration: none;
+    }
+
+    .back-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* MENU BÊN TRÁI */
+    .sidenav {
+      background: var(--glass-bg);
+      height: 100vh;
+      padding: 30px 20px;
+      position: fixed;
+      overflow-y: auto;
+      border-right: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .sidenav h4 {
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: -0.5px;
+      margin-bottom: 30px;
+      padding-left: 15px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .nav-pills li a {
+      color: #64748b;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-weight: 500;
+      transition: 0.3s all;
+    }
+
+    .nav-pills li a i {
+      margin-right: 10px;
+      width: 20px;
+    }
+
+    .nav-pills li a:hover,
+    .nav-pills li.active a {
+      background:
+        linear-gradient(135deg,
+        var(--primary-color),
+        var(--accent-color)) !important;
+
+      color: white !important;
+
+      transform: translateX(5px);
+
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    /* NỘI DUNG CHÍNH */
+    .main-content {
+      margin-left: 25%;
+      padding: 50px;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.2);
+
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .title {
+      color: #1e293b;
+      font-weight: 800;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 20px;
+
+      box-shadow:
+        0 10px 15px rgba(0,0,0,0.1);
+
+      transition: 0.4s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.03);
+    }
+
+    .info p {
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .info b {
+      color: var(--primary-color);
+      width: 140px;
+      display: inline-block;
+    }
+
+    .intro {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 15px;
+      font-style: italic;
+      color: #475569;
+      margin-top: 30px;
+      border-left: 5px solid var(--accent-color);
+    }
+
+    /* NÚT TRANG TIẾP */
+    .btn-next-page {
+      background:
+        linear-gradient(135deg,
+        #10b981,
+        #059669);
+
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      float: right;
+      margin-top: 30px;
+
+      transition: 0.3s;
+
+      box-shadow:
+        0 10px 15px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-next-page:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 20px rgba(16, 185, 129, 0.3);
+
+      color: white;
+      text-decoration: none;
+    }
+
+    /* SEARCH BAR */
+    .input-group .form-control {
+      border-radius: 10px 0 0 10px;
+      border: 1px solid #e2e8f0;
+      height: 40px;
+    }
+
+    .input-group-btn .btn {
+      border-radius: 0 10px 10px 0;
+      height: 40px;
+      background: var(--primary-color);
+    }
+
+    footer {
+      background: rgba(15, 23, 42, 0.9);
+      color: #94a3b8;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      margin-left: 25%;
+    }
+
+    /* RESPONSIVE */
+    @media screen and (max-width:768px){
+
+      .sidenav {
+        height: auto;
+        position: relative;
+        width: 100%;
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      footer {
+        margin-left: 0;
+      }
+
+      .back-btn {
+        top: 15px;
+        right: 15px;
+
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NÚT QUAY LẠI
+========================== -->
+<a href="index.html" class="back-btn">
+  <i class="fa-solid fa-arrow-left"></i>
+  Quay lại
+</a>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <!-- MENU BÊN TRÁI -->
+    <div class="col-sm-3 sidenav">
+
+      <h4>
+        <i class="fa-solid fa-code-branch"></i>
+        PORTFOLIO TRỊ
+      </h4>
+
+      <ul class="nav nav-pills nav-stacked">
+
+        <li class="active">
+          <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            Trang chủ
+          </a>
+        </li>
+
+        <li>
+          <a href="Gioithieu.html">
+            <i class="fa-solid fa-user"></i>
+            Giới thiệu
+          </a>
+        </li>
+
+        <li>
+          <a href="Trainghiem.html">
+            <i class="fa-solid fa-star"></i>
+            Trải nghiệm
+          </a>
+        </li>
+
+        <li>
+          <a href="Kinhnghiem.html">
+            <i class="fa-solid fa-briefcase"></i>
+            Kinh nghiệm
+          </a>
+        </li>
+
+        <li>
+          <a href="Hoatdong.html">
+            <i class="fa-solid fa-users"></i>
+            Hoạt động
+          </a>
+        </li>
+
+        <li>
+          <a href="Khenthuong.html">
+            <i class="fa-solid fa-award"></i>
+            Khen thưởng
+          </a>
+        </li>
+
+        <li>
+          <a href="Lienhe.html">
+            <i class="fa-solid fa-envelope"></i>
+            Liên hệ
+          </a>
+        </li>
+
+      </ul>
+
+      <div class="input-group" style="margin-top: 30px;">
+
+        <input type="text"
+               class="form-control"
+               placeholder="Tìm kiếm...">
+
+        <span class="input-group-btn">
+
+          <button class="btn btn-primary" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- NỘI DUNG CHÍNH -->
+    <div class="col-sm-9 main-content">
+
+      <div class="profile-card">
+
+        <h2 class="title text-center">
+          Giới Thiệu Bản Thân
+        </h2>
+
+        <hr style="border-top: 2px solid #f1f5f9;">
+
+        <div class="row">
+
+          <div class="col-sm-4 text-center">
+
+            <img src="images/hinh1.jpg"
+                 class="profile-img"
+                 alt="Nguyễn Vỉnh Trị">
+
+          </div>
+
+          <div class="col-sm-8 info">
+
+            <p>
+              <b>
+                <i class="fa-solid fa-id-card"></i>
+                Họ và tên:
+              </b>
+
+              Nguyễn Vỉnh Trị
+            </p>
+
+            <p>
+              <b>
+                <i class="fa-solid fa-cake-candles"></i>
+                Năm sinh:
+              </b>
+
+              2006
+            </p>
+
+            <p>
+              <b>
+                <i class="fa-solid fa-university"></i>
+                Trường:
+              </b>
+
+              Đại học Trà Vinh (TVU)
+            </p>
+
+            <p>
+              <b>
+                <i class="fa-solid fa-laptop-code"></i>
+                Ngành:
+              </b>
+
+              Công nghệ thông tin
+            </p>
+
+            <p>
+              <b>
+                <i class="fa-solid fa-heart"></i>
+                Sở thích:
+              </b>
+
+              Thiết kế đồ họa, Coding, IELTS
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="intro text-center">
+
+          "Khám phá thế giới qua những dòng code
+          và niềm đam mê sáng tạo."
+
+        </div>
+
+        <!-- NÚT TRANG TIẾP -->
+        <a href="Gioithieu.html" class="btn-next-page">
+
+          Khám phá chi tiết
+
+          <i class="fa-solid fa-arrow-right"
+             style="margin-left: 8px;"></i>
+
+        </a>
+
+        <div style="clear:both;"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    © 2026 - Bản quyền thuộc về
+    <b>Nguyễn Vỉnh Trị</b> |
+    Tra Vinh University
+  </p>
+</footer>
+
+</body>
+</html>
