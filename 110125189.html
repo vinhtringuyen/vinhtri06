@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+
+    <style>
+        body{
+            background: white;
+            font-family: Times New Roman;
+        }
+
+        /* Khung xanh ngoài */
+        .container{
+            width: 320px;
+            margin: 30px auto;
+            background: #ccc;
+            border: 15px solid green;
+            padding: 20px;
+        }
+
+        h1{
+            margin-bottom: 30px;
+        }
+
+        label{
+            font-size: 28px;
+        }
+
+        /* Ô nhập */
+        input[type="text"],
+        input[type="password"]{
+            width: 100%;
+            height: 35px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-bottom: 3px solid crimson;
+            background: white;
+            font-size: 18px;
+        }
+
+        /* Nút đăng nhập */
+        button{
+            margin-top: 20px;
+            width: 130px;
+            height: 50px;
+            background: #10b981;
+            color: white;
+            border: 3px solid #4ade80;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Đăng nhập</h1>
+
+        <input type="text">
+
+        <p>Tên đăng nhập</p>
+
+        <input type="password">
+
+        <p>Mật khẩu</p>
+
+        <input type="radio" name="gioitinh"> Nam <br>
+        <input type="radio" name="gioitinh"> Nữ <br>
+
+        <input type="checkbox"> Lưu giá trị đăng nhập
+
+        <br>
+
+        <button>Đăng nhập</button>
+
+    </div>
+
+</body>
+</html>
