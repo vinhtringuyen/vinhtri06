@@ -1,3 +1,8 @@
+Dưới đây là mã code hoàn chỉnh của trang **Đăng nhập THPT** sau khi đã tích hợp thêm nút **"Quay lại danh sách"** theo phong cách gradient xanh dương của bạn.
+
+Vì layout này sử dụng `display: flex` căn giữa toàn màn hình (`min-height: 100vh`), tôi đã tạo một khối bọc ngoài độc lập cho nút để đảm bảo nó nằm cố định phía trên giao diện đăng nhập một cách gọn gàng, không làm lệch cấu trúc khối `container` chính.
+
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -19,12 +24,51 @@
         body{
             background:#eef2ff;
             display:flex;
+            flex-direction: column; /* Đổi sang cột để xếp nút quay lại lên trên */
             justify-content:center;
             align-items:center;
             min-height:100vh;
             padding:20px;
         }
 
+        /* KHỐI CHỨA NÚT QUAY LẠI DANH SÁCH */
+        .wrapper-back-btn {
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+        }
+
+        .back-btn:active {
+            transform: scale(0.98);
+        }
+
+        .back-icon {
+            font-size: 18px;
+        }
+
+        /* CONTAINER CHÍNH */
         .container{
             width:1200px;
             background:white;
@@ -226,10 +270,21 @@
             .right h3{
                 font-size:28px;
             }
+            
+            .wrapper-back-btn {
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <div class="wrapper-back-btn">
+        <a href="index.html" class="back-btn">
+            <span class="back-icon">←</span>
+            Quay lại danh sách
+        </a>
+    </div>
 
     <div class="container">
 
@@ -331,3 +386,5 @@
 
 </body>
 </html>
+
+```
