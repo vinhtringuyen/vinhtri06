@@ -9,12 +9,51 @@
         body{
             background: white;
             font-family: Times New Roman;
+            padding: 20px; /* Thêm padding cho body dễ nhìn hơn */
+        }
+
+        /* STYLE NÚT QUAY LẠI DANH SÁCH */
+        .wrapper-back-btn {
+            width: 100%;
+            max-width: 320px; /* Khớp với chiều rộng của form đăng nhập */
+            margin: 0 auto 15px auto; /* Căn giữa giống form và cách form một khoảng */
+            text-align: left;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            text-decoration: none;
+            font-family: Arial, sans-serif; /* Đảm bảo font chữ của nút hiện đẹp */
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+        }
+
+        .back-btn:active {
+            transform: scale(0.98);
+        }
+
+        .back-icon {
+            font-size: 18px;
         }
 
         /* Khung xanh ngoài */
         .container{
             width: 320px;
-            margin: 30px auto;
+            margin: 0 auto; /* Đổi lại để đi cùng hàng với nút back phía trên */
             background: #ccc;
             border: 15px solid green;
             padding: 20px;
@@ -60,6 +99,13 @@
 </head>
 
 <body>
+
+    <div class="wrapper-back-btn">
+        <a href="index.html" class="back-btn">
+            <span class="back-icon">←</span>
+            Quay lại danh sách
+        </a>
+    </div>
 
     <div class="container">
 
